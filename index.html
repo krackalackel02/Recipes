@@ -5,7 +5,30 @@
 		<title>Recipes</title>
 	</head>
 	<body>
-        <h1>Odin Recipes</h1>
-        <a href="./specific recipes/recipe_name.html">Recipe Title</a>
+        <h1>My Recipes</h1>
+        <p>Here are some of the latest recipes provided by the <em>recipes.js</em> file:</p>
+        <div id = "recipeList"></div>
+        <script src="./recipes.js"></script>
+        <script>
+            let list = document.getElementById("recipeList");
+            for (const recipe of Array.from(recipeBook)) {
+                list.appendChild(addRecipe(recipe))
+            }
+            function addRecipe(recipe) {
+                let plan = document.createElement("div")
+                let heading = document.createElement("h2")
+                heading.textContent = recipe.name;
+                let pic = document.createElement("img")
+                pic.src = "./images/" + recipe.image
+                pic.alt = recipe.name
+                pic.width = "200"
+                pic.height = "200"
+                let link = document.createElement("a")
+                link.href = recipe.url
+                link.appendChild(heading)
+                plan.appendChild(link).appendChild(pic)
+                return plan
+            }
+        </script>
     </body>
 </html>
