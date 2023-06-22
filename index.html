@@ -3,32 +3,75 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Recipes</title>
+		<style>
+			.recipeTemplate {
+				height: 100%;
+				display: flex;
+			}
+			.recipeTemplate span {
+				display: inline-block;
+			}
+			.recipeTemplate img {
+				width: 200px;
+				height: 200px;
+				margin: auto;
+				display: block;
+			}
+		</style>
 	</head>
 	<body>
-        <h1>My Recipes</h1>
-        <p>Here are some of the latest recipes provided by the <em>recipes.js</em> file:</p>
-        <div id = "recipeList"></div>
-        <script src="./recipes.js"></script>
-        <script>
-            let list = document.getElementById("recipeList");
-            for (const recipe of Array.from(recipeBook)) {
-                list.appendChild(addRecipe(recipe))
-            }
-            function addRecipe(recipe) {
-                let plan = document.createElement("div")
-                let heading = document.createElement("h2")
-                heading.textContent = recipe.name;
-                let pic = document.createElement("img")
-                pic.src = "./images/" + recipe.image
-                pic.alt = recipe.name
-                pic.width = "200"
-                pic.height = "200"
-                let link = document.createElement("a")
-                link.href = recipe.url
-                link.appendChild(heading)
-                plan.appendChild(link).appendChild(pic)
-                return plan
-            }
-        </script>
-    </body>
+		<h1>My Recipes</h1>
+		<p>
+			Here are some of the latest recipes provided by the
+			<em>recipes.js</em> file:
+		</p>
+		<ul id="recipeBullet"></ul>
+		<div id="recipeList"></div>
+		<script src="./recipes.js"></script>
+		<script>
+			let list = document.getElementById("recipeList");
+			let listBullet = document.getElementById("recipeBullet");
+			for (const recipe of Array.from(recipeBook)) {
+				let page = document.createElement("div");
+				page.className = "recipeTemplate";
+
+				let pictureBlock = document.createElement("div");
+				let pictureLink = document.createElement("a");
+				pictureLink.href = recipe.url;
+				let pictureHeading = document.createElement("h2");
+				pictureHeading.innerHTML =
+					"<strong><center>" + recipe.name + "</center></strong>";
+				pictureHeading.id = recipe.name;
+				pictureLink.appendChild(pictureHeading);
+				pictureBlock.appendChild(pictureLink);
+				let picture = document.createElement("img");
+				picture.src = "./images/" + recipe.image;
+				picture.alt = recipe.name;
+				pictureBlock.appendChild(picture);
+
+				let instructionBlock = document.createElement("div");
+				let instructionHeading = document.createElement("h3");
+				instructionHeading.innerHTML = "<em><center>Instructions</center></em>";
+				instructionBlock.appendChild(instructionHeading);
+				let instructions = document.createElement("ol");
+				for (const step of recipe.instructions) {
+					let instructionStep = document.createElement("li");
+					instructionStep.innerHTML = step;
+					instructions.appendChild(instructionStep);
+				}
+				instructionBlock.appendChild(instructions);
+
+				page.appendChild(pictureBlock);
+				page.appendChild(instructionBlock);
+				list.appendChild(page);
+
+				let bullet = document.createElement("li");
+				bullet.innerHTML = recipe.name;
+				bulletLink = document.createElement("a");
+				bulletLink.href = "#" + recipe.name;
+				bulletLink.appendChild(bullet);
+				listBullet.appendChild(bulletLink);
+			}
+		</script>
+	</body>
 </html>
