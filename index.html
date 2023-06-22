@@ -10,6 +10,8 @@
 			}
 			.recipeTemplate span {
 				display: inline-block;
+                height: 100%;
+                margin:0 auto 0 auto;
 			}
 			.recipeTemplate img {
 				width: 200px;
@@ -49,7 +51,7 @@
 				picture.alt = recipe.name;
 				pictureBlock.appendChild(picture);
 
-				let instructionBlock = document.createElement("div");
+				let instructionBlock = document.createElement("span");
 				let instructionHeading = document.createElement("h3");
 				instructionHeading.innerHTML = "<em><center>Instructions</center></em>";
 				instructionBlock.appendChild(instructionHeading);
