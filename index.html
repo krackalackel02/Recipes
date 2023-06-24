@@ -3,57 +3,37 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Recipes</title>
-		<style>
-			.recipeTemplate {
-				height: 100%;
-				display: flex;
-			}
-			.recipeTemplate span {
-				display: inline-block;
-				height: 100%;
-				margin: 0 auto 0 auto;
-				word-wrap: break-word;
-				overflow-wrap: break-word;
-				hyphens: auto;
-                
-			}
-            .recipeTemplate div {
-				width: 200px;
-			}
-
-			.recipeTemplate img {
-				width: 200px;
-				height: 200px;
-				margin: auto;
-				display: block;
-			}
-		</style>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<h1>My Recipes</h1>
-		<p>
-			Here are some of the latest recipes provided by the
-			<em>recipes.js</em> file:
-		</p>
-		<ul id="recipeBullet"></ul>
+		<div class="nav">
+			<h1 class="header">My Recipes</h1>
+			<p class="intro">
+				Here are some of the latest recipes provided by the
+				<em>recipes.js</em> file:
+			</p>
+			<ul id="recipeBullet"></ul>
+			
+		</div>
 		<div id="recipeList"></div>
 		<script src="./recipes.js"></script>
 		<script>
 			let list = document.getElementById("recipeList");
 			let listBullet = document.getElementById("recipeBullet");
 			for (const recipe of Array.from(recipeBook)) {
-				let page = document.createElement("div");
-				page.className = "recipeTemplate";
+				let container = document.createElement("div");
+				container.className = "recipeTemplate";
 
 				let pictureBlock = document.createElement("div");
 				let pictureLink = document.createElement("a");
 				pictureLink.href = recipe.url;
 				let pictureHeading = document.createElement("h2");
 				pictureHeading.innerHTML =
-					"<strong><center>" + recipe.name + "</center></strong>";
+					recipe.name;
 				pictureHeading.id = recipe.name;
-				pictureLink.appendChild(pictureHeading);
-				pictureBlock.appendChild(pictureLink);
+				// pictureLink.appendChild(pictureHeading);
+				// pictureBlock.appendChild(pictureLink);
+				pictureBlock.appendChild(pictureHeading);
 				let picture = document.createElement("img");
 				picture.src = "./images/" + recipe.image;
 				picture.alt = recipe.name;
@@ -61,7 +41,7 @@
 
 				let instructionBlock = document.createElement("span");
 				let instructionHeading = document.createElement("h3");
-				instructionHeading.innerHTML = "<em><center>Instructions</center></em>";
+				instructionHeading.innerHTML = "Instructions:";
 				instructionBlock.appendChild(instructionHeading);
 				let instructions = document.createElement("ol");
 				for (const step of recipe.instructions) {
@@ -71,9 +51,9 @@
 				}
 				instructionBlock.appendChild(instructions);
 
-				page.appendChild(pictureBlock);
-				page.appendChild(instructionBlock);
-				list.appendChild(page);
+				container.appendChild(pictureBlock);
+				container.appendChild(instructionBlock);
+				list.appendChild(container);
 
 				let bullet = document.createElement("li");
 				bullet.innerHTML = recipe.name;
