@@ -2,7 +2,7 @@
 	height: 100%;
 	display: flex;
 	background-color: #fffafa;
-	margin: 40px 20px;
+	margin: 20px 20px;
 	border-radius: 20px;
 	box-shadow: 3px 3px 5px 5px rgba(0, 0, 0, 0.5);
 	border: solid darkred 3px;
@@ -48,7 +48,7 @@
 	box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.5);
 }
 body {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Cookie', cursive;
 	background-color: #c2a3d1;
 }
 /* body * {
@@ -70,7 +70,7 @@ nav {
 }
 .header,
 #recipeBullet * {
-	color: darkred;
+	color: hsl(0, 100%, 27%);
 }
 
 .nav * {
@@ -84,4 +84,33 @@ nav {
 
 #recipeBullet a {
 	margin: 0 10px;
+}
+#recipeBullet a *:hover {
+	color: hsl(0, 95%, 42%);
+	
+}
+.wrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+#return{
+    background-color: #fffafa;
+    color: darkred;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    padding: 5px;
+    border: solid darkred 3px;
+    border-radius: 10px;
+}
+#return:hover{
+    background-color: #cdcccc;
+    color: hsl(0, 95%, 42%);
+}
+
+.instructions h3{
+    text-decoration: underline;
+}
+
+.instructions ol li {
+    text-align: left;
 }

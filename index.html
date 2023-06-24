@@ -4,10 +4,13 @@
 		<meta charset="utf-8" />
 		<title>Recipes</title>
 		<link rel="stylesheet" href="style.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<div class="nav">
-			<h1 class="header">My Recipes</h1>
+			<h1 id="header" class="header">My Recipes</h1>
 			<p class="intro">
 				Here are some of the latest recipes provided by the
 				<em>recipes.js</em> file:
@@ -16,6 +19,12 @@
 			
 		</div>
 		<div id="recipeList"></div>
+		<div class="wrapper">
+			<a href="#header">
+
+				<span id="return">Return to top</span>
+			</a>
+		</div>
 		<script src="./recipes.js"></script>
 		<script>
 			let list = document.getElementById("recipeList");
@@ -40,6 +49,7 @@
 				pictureBlock.appendChild(picture);
 
 				let instructionBlock = document.createElement("span");
+				instructionBlock.className = "instructions"
 				let instructionHeading = document.createElement("h3");
 				instructionHeading.innerHTML = "Instructions:";
 				instructionBlock.appendChild(instructionHeading);
