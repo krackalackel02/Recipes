@@ -20,9 +20,9 @@
 		</div>
 		<div id="recipeList"></div>
 		<div class="wrapper">
-			<a href="#header">
+			<a href="#header" class=" returnButton">
 
-				<span id="return">Return to top</span>
+				<span class="return">Return to top</span>
 			</a>
 		</div>
 		<script src="./recipes.js"></script>
@@ -61,8 +61,18 @@
 				}
 				instructionBlock.appendChild(instructions);
 
+				let viewButton = document.createElement("a")
+				let button = document.querySelector("span")
+				viewButton.className = "return recipeButton"
+				viewButton.innerHTML = "View recipe online"
+				viewButton.href = recipe.url
+
+
+
+
 				container.appendChild(pictureBlock);
 				container.appendChild(instructionBlock);
+				container.appendChild(viewButton)
 				list.appendChild(container);
 
 				let bullet = document.createElement("li");

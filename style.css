@@ -91,9 +91,9 @@ nav {
 }
 .wrapper{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
-#return{
+.return{
     background-color: #fffafa;
     color: darkred;
     display: inline-block;
@@ -102,7 +102,7 @@ nav {
     border: solid darkred 3px;
     border-radius: 10px;
 }
-#return:hover{
+.return:hover{
     background-color: #cdcccc;
     color: hsl(0, 95%, 42%);
 }
@@ -113,4 +113,10 @@ nav {
 
 .instructions ol li {
     text-align: left;
+}
+
+.recipeButton {
+	margin-top: 10px;
+	max-height: 20px;
+	background-color: #f1adec9a;
 }
